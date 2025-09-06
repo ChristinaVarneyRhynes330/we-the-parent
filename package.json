@@ -1,0 +1,23 @@
+{
+  "name": "we-the-parent",
+  "private": true,
+  "workspaces": [
+    "packages/app-next",
+    "packages/app-web",
+    "packages/app-helper",
+    "packages/ui"
+  ],
+  "scripts": {
+    "build:ui": "npm --workspace @we-the-parent/ui run build",
+    "dev:next": "npm --workspace app-next run dev",
+    "dev:web": "npm --workspace app-web run start",
+    "dev:helper": "npm --workspace app-helper run start"
+  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
