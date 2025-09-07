@@ -1,0 +1,25 @@
+name: CI – node checks
+
+on:
+  push:
+    paths:
+      - 'packages/node-checks/**'
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/node-checks
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: packages/node-checks/node_modules
+          key: ${{ runner.os }}-node-checks-${{ hashFiles('packages/node-checks/package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
